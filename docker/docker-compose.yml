@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+
+# ------> node ------>
+    node_d8grpt30hjlxxcknv:
+        container_name: node_d8grpt30hjlxxcknv
+        image: node:10.5-alpine
+        user: "node"
+        working_dir: /node
+        volumes:
+            - .././:/node
+        environment:
+            NODE_ENV: dev
+        expose:
+            - 8081
+# <------ node <------
