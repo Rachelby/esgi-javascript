@@ -84,5 +84,17 @@ function verlan(str){
     return motInverse;
 }
 
-
 console.log(verlan("Anaconda"))
+
+
+function yoda(str){
+	tab = str.split(" ");
+	console.log(tab.length)
+	for (i = tab.length; i > 0; i--) {
+
+		tab[i] = tab[i]+tab[i].substr(1, tab[i].length);
+	}
+	str = tab.join(" ");
+	return str
+}
+console.log(yoda("Hello world"))
