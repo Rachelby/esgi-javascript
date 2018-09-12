@@ -96,5 +96,5 @@ function yoda(str){
 	str = tab.join(" ");
 	return str
 }
-console.log(yoda("Hello world"))
+// console.log(yoda("Hello world"))
 
