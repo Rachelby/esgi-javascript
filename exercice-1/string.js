@@ -39,7 +39,6 @@ function snake_case(str){
 console.log(snake_case("hello world"))
 
 function convertLettreToLeet(lettre) {
-    // Par défaut, la lettre ne change pas
     var lettreLeet = lettre;
     switch (lettre.toLowerCase()) {
     case "a":
