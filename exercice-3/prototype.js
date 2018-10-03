@@ -1,99 +1,61 @@
-function ucfirst(str){
-  return str.substr(0,1).toUpperCase() + str.substr(1,str.length).toLowerCase()
+String.prototype.ucfirst = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1)
 }
 
-console.log(ucfirst("hello world"))
+console.log("hello world".ucfirst())
 
-function capitalize(str){
 
-  tab = str.split(" ");
-  for (var m in tab) {
-    tab[m] = tab[m].substr(0, 1).toUpperCase()+tab[m].substr(1, tab[m].length);
-  }
-  str = tab.join(" ");
-  return str
+String.prototype.capitalize = function () {
+  let words = this.trim().split(' ')
+  return words.map(word => word.ucfirst()).join(' ')
 }
 
-console.log(capitalize("hello world"))
-
-function camelCase(str){
-  tab = str.split(" ");
-  for (var m in tab) {
-    tab[m] = tab[m].substr(0, 1).toUpperCase()+tab[m].substr(1, tab[m].length);
-  }
-  str = tab.join("");
-  return str
+String.prototype.camelCase = function () {
+  return this.capitalize().replace(' ', '')
 }
 
-console.log(camelCase("hello world"))
+console.log("hello world".camelCase())
 
-function snake_case(str){
-  tab = str.split(" ");
-  for (var m in tab) {
-    tab[m] = tab[m].substr(0, 1)+tab[m].substr(1, tab[m].length);
-  }
-  str = tab.join("_");
-  return str
+
+String.prototype.snake_case = function () {
+  return this.toLowerCase().replace(' ', '_')
 }
 
-console.log(snake_case("hello world"))
+String.prototype.leet = function () {
+  return this
+    .replace('a', '4')
+    .replace('e', '3')
+    .replace('i', '1')
+    .replace('o', '0')
+    .replace('u', '(_)')
+    .replace('y', '7')
+}
 
-function convertLettreToLeet(lettre) {
-    var lettreLeet = lettre;
-    switch (lettre.toLowerCase()) {
-    case "a":
-        lettreLeet = "4";
-        break;
-    case "e":
-        lettreLeet = "3";
-        break;
-    case "l":
-        lettreLeet = "1";
-        break;
-    case "u":
-        lettreLeet = "(_)";
-        break;
-    case "t":
-        lettreLeet = "7";
-        break;
+String.prototype.verlan = function () {
+  let words = this.trim().split(' ')
+  return words.map(word => word.split('').reverse().join('')).join(' ')
+}
+
+String.prototype.yoda = function () {
+  let words = this.trim().split(' ')
+  return words.reverse().join(' ')
+}
+
+Object.prototype.prop_access = function (string) {
+  let props = string.split('.')
+  let res = this
+  props.map(prop => {
+    res = res[prop]
+  })
+  return res ? res : string + ' not exist'
+}
+
+let object = {
+  animal: {
+    type: {
+      name: 'dog'
     }
-    return lettreLeet;
-}
-
-function leet(str) {
-    var motLeet = "";
-    for (var i = 0; i < str.length; i++) {
-        motLeet = motLeet + convertLettreToLeet(str[i]);
-    }
-    return motLeet;
-}
-
-console.log(leet("Anaconda"))
-
-
-function prop_access(){
-
-}
-
-function verlan(str){
-  var motInverse = "";
-  for (var i = 0; i < str.length; i++) {
-        motInverse = str[i] + motInverse;
-    }
-    return motInverse;
-}
-
-console.log(verlan("Anaconda"))
-
-
-function yoda(str){
-  tab = str.split(" ");
-  for (i = tab.length; i > 0; i--) {
-
-    tab[i] = tab[i]+tab[i].substr(1, tab[i].length);
   }
-  str = tab.join(" ");
-  return str
 }
-// console.log(yoda("Hello world"))
 
+console.log(object.prop_access('animal.type.name'))
